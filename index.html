@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opengate — Boutique AI/ML Studio</title>
+<style>
+    /* ------------------- */
+    /* --- Base Styles --- */
+    /* ------------------- */
+    :root {
+        --base-bg: #000000;
+        --card-bg: #111111;
+        --border-color: #2b2b2b;
+        --text-primary: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --accent-color: #0a84ff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: var(--base-bg);
+        color: var(--text-primary);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ------------------- */
+    /* --- Logo --- */
+    /* ------------------- */
+    .logo {
+        position: fixed;
+        top: 24px;
+        left: 40px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        z-index: 1000;
+        letter-spacing: -0.01em;
+    }
+
+    /* ------------------- */
+    /* --- Sections --- */
+    /* ------------------- */
+    .section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 120px 4vw;
+        text-align: center;
+        /* Animation */
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Class for visible section */
+    .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* ------------------- */
+    /* --- Typography --- */
+    /* ------------------- */
+    h1 {
+        font-size: clamp(2.8rem, 6vw, 4.5rem);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        margin-bottom: 24px;
+    }
+
+    h2 {
+        font-size: clamp(2.4rem, 5vw, 3.5rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+    }
+    
+    h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: var(--text-primary);
+    }
+
+    .subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 400;
+        line-height: 1.5;
+        max-width: 800px;
+        color: var(--text-secondary);
+        margin: 0 auto;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+    /* ------------------- */
+    /* --- Components --- */
+    /* ------------------- */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 28px;
+        margin-top: 50px;
+        width: 100%;
+        max-width: 1200px;
+        text-align: left;
+    }
+
+    .service-card {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 32px;
+        border: 1px solid var(--border-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .service-card h4 {
+        color: var(--accent-color);
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+    }
+
+    .final-pitch {
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        line-height: 1.6;
+        max-width: 800px;
+        color: var(--text-primary);
+        margin-top: 60px;
+    }
+
+    /* ------------------- */
+    /* --- Contact --- */
+    /* ------------------- */
+    .contact-section .subtitle {
+        margin-bottom: 40px;
+    }
+
+    .contact-info {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 48px;
+        border: 1px solid var(--border-color);
+        max-width: 700px;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .contact-info a {
+        display: block;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: var(--text-primary);
+        text-decoration: none;
+        margin: 8px 0;
+        transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+        color: var(--accent-color);
+    }
+
+    .contact-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+    }
+    
+    .footer-note {
+      margin-top: 44px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    /* ------------------- */
+    /* --- Responsiveness --- */
+    /* ------------------- */
+    @media (max-width: 768px) {
+        .logo {
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+        }
+        
+        .section {
+            padding: 100px 5vw;
+            min-height: auto;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header class="logo">
+    opengate
+</header>
+
+<main>
+
+    <section class="section">
+        <h1>We are a boutique AI/ML studio</h1>
+        <p class="subtitle">
+            that blends world-class engineering with creative product design.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Tailored AI-Driven Solutions</h2>
+        <p class="subtitle">For banks, insurers, retailers, telecom, and enterprises:</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h4>GenAI Solutions & Conversational Interfaces</h4>
+                <p>Intelligent chatbots, internal assistants, natural language processing, ReAct AI agents, RAG solutions, and AI workflows.</p>
+            </div>
+            <div class="service-card">
+                <h4>Real-Time Fraud & Anomaly Detection</h4>
+            </div>
+            <div class="service-card">
+                <h4>Dynamic Pricing & Demand Forecasting Engines</h4>
+            </div>
+            <div class="service-card">
+                <h4>Automated Underwriting, Credit Scoring & Risk Models</h4>
+            </div>
+            <div class="service-card">
+                <h4>Recommendation Systems</h4>
+            </div>
+            <div class="service-card">
+                <h4>High-Load, Secure & Scalable Back-End Architectures</h4>
+            </div>
+        </div>
+
+        <p class="final-pitch">
+            Whether you need to modernize legacy platforms, unlock hidden value in your data, or launch an AI-powered product from scratch, we focus on delivering measurable business impact.
+        </p>
+    </section>
+
+    <section class="section contact-section">
+        <h2>Let’s talk</h2>
+        
+        <div class="contact-info">
+            <div>
+                <div class="contact-label">Email us</div>
+                <a href="mailto:hello@opengatekz.com">hello@opengatekz.com</a>
+            </div>
+            <div style="margin-top: 24px;">
+                <div class="contact-label">Message us on WhatsApp</div>
+                <a href="https://wa.me/77079279268" target="_blank">+7 707 927 92 68</a>
+            </div>
+        </div>
+
+        <p class="footer-note">© 2025 opengate, Almaty, Kazakhstan</p>
+    </section>
+
+</main>
+
+<script>
+    // Intersection Observer for revealing sections on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    // Observe all sections
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
